@@ -1,0 +1,41 @@
+/* MyForm.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Merriweather:wght@700&family=Oswald:wght@300&family=Roboto+Mono&display=swap');
+
+
+
+.main {
+  background-image: url('https://images.unsplash.com/photo-1485848395967-65dff62dc35b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGhvc3BpdGFsfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60');
+  background-image: url('https://images.unsplash.com/photo-1612537785055-e226dae15987?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80');
+ 
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+
+.login-title{
+    font-family: 'Merriweather', serif;
+    font-size: 35px;
+}
+.form-group {
+    position: relative;
+  }
+  
+  .form-label {
+    position: absolute;
+    pointer-events: none;
+    transition: 0.2s ease all;
+    top: 10px;
+    left: 10px;
+    color: #999;
+  }
+  
+  .form-label.active {
+    top: -15px;
+    left: 5px;
+    font-size: 12px;
+    color: #555;
+    background-color: #fff;
+    padding: 0 5px;
+  }
+  

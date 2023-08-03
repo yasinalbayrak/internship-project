@@ -1,0 +1,140 @@
+.gradient-custom {
+    /* fallback for old browsers */
+    background: #f6d365;
+  
+
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
+        /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
+  }
+
+
+ .profile .button {
+    --main-focus: #2d8cf0;
+    --font-color: #dedede;
+    --bg-color-sub: #269639;
+    --bg-color: #269639;
+    --main-color: #dedede;
+    position: relative;
+    width: 240px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--main-color);
+    box-shadow: 4px 4px var(--main-color);
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+.profile  .button,.profile  .button__icon,.profile  .button__text {
+    transition: all 0.3s;
+  }
+  
+.profile  .button .button__text {
+    transform: translateX(25px);
+    color: var(--font-color);
+    font-weight: 600;
+  }
+  
+.profile  .button .button__icon {
+    position: absolute;
+    transform: translateX(189px);
+    height: 100%;
+    width: 39px;
+    background-color: var(--bg-color-sub);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+.profile  .button .svg {
+    width: 20px;
+    stroke: var(--main-color);
+  }
+  
+.profile  .button:hover {
+    background: var(--bg-color);
+  }
+  
+ .profile .button:hover .button__text {
+    color: transparent;
+  }
+  
+ .profile .button:hover .button__icon {
+    width: 225px;
+    transform: translateX(0);
+  }
+  
+ .profile .button:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0px 0px var(--main-color);
+  }
+
+  /*      MINE        */
+
+  .profile .mine .button {
+    --main-focus: #2d8cf0;
+    --font-color: #dedede;
+    --bg-color-sub: #297bf7;
+    --bg-color: #297bf7;
+    --main-color: #dedede;
+    position: relative;
+    width: 210px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--main-color);
+    box-shadow: 4px 4px var(--main-color);
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+.profile .mine  .button,.profile .mine .button__icon,.profile .mine .button__text {
+    transition: all 0.3s;
+  }
+  
+.profile .mine  .button .button__text {
+    transform: translateX(25px);
+    color: var(--font-color);
+    font-weight: 600;
+  }
+  
+.profile .mine  .button .button__icon {
+    position: absolute;
+    transform: translateX(159px);
+    height: 100%;
+    width: 39px;
+    background-color: var(--bg-color-sub);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+.profile .mine  .button .svg {
+    width: 20px;
+    stroke: var(--main-color);
+  }
+  
+.profile .mine  .button:hover {
+    background: var(--bg-color);
+  }
+  
+ .profile .mine .button:hover .button__text {
+    color: transparent;
+  }
+  
+ .profile .mine .button:hover .button__icon {
+    width: 205px;
+    transform: translateX(0);
+  }
+  
+ .profile .mine .button:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0px 0px var(--main-color);
+  }
