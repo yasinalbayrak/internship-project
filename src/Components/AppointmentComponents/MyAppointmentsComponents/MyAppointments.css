@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans&display=swap');
+
+.appointment-outer-container{
+    min-height: 100%;
+    max-height: fit-content;
+    display: flex;
+    justify-content: center;
+    padding-top: 5rem;
+    background: linear-gradient(45deg,#4158d0,#c850c0);
+}
+
+.appointment-container{
+    width: 75%;
+    max-width: 75%;
+    min-height: 200px;
+    max-height: fit-content;
+    
+}
+
+.appointment-container table{
+    max-width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.appointment-container th,.appointment-container td {
+    width: 70rem;
+    padding-left: 8px;
+}
+
+
+.appointment-container .header{
+    background-color: #36304a;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-weight:100;
+    font-size: 18px;
+
+
+    height: 60px;
+}
+
+.appointment-container th:first-child{
+    padding-left: 40px;
+}
+
+.appointment-container .header th{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: unset;
+    font-size: 16px;
+}
+
+
+/* table body */
+
+.appointment-container tbody td {
+    padding: 0.5rem;
+    font-family: OpenSans-Regular;
+    font-size: 15px;
+    color: gray;
+    line-height: 1.2;
+    font-weight: unset;
+    height: 40px;
+}
+
+
+
+.appointment-container .app-status .st-active{
+
+
+    border-radius: 50px;
+    width: 70%;
+    padding: 0.5rem;
+    background-color: rgb(43, 255, 0);
+
+    display: flex;
+    justify-content: center;
+
+}
+.appointment-container .app-status .st-cancelled{
+    border-radius: 50px;
+    width: 70%;
+    padding: 0.5rem;
+    background-color: #f85246;
+    color: rgb(216, 213, 213);
+    display: flex;
+    justify-content: center;
+
+}
+.appointment-container .app-status .st-passed{
+    
+    border-radius: 50px;
+    width: 70%;
+    padding: 0.5rem;
+    background-color: #4ebdb2;
+    color: rgb(104, 104, 104);
+    display: flex;
+    justify-content: center;
+
+}
+
+.appointment-container tbody tr{
+    cursor:auto;
+
+}
+
+.appointment-container tbody tr:nth-child(n):hover{
+    background-color:#f5f5f5;
+    
+}
+
+.appointment-container tbody tr:nth-child(odd){
+    background-color: white;
+}
+.appointment-container tbody tr:nth-child(even){
+    background-color: #f5f5f5;
+}
+
+
+/* Cancel Appointment Button*/
+
+.red-bold-icon {
+    color: red;
+    font-weight: bold;
+    font-size: 2rem;
+  }
+
+
+.header th:last-child,
+  tbody td:last-child {
+      width: 10rem; /* Adjust the width as needed */
+      text-align: center; /* Center the content horizontally */
+  }
+
+.icon-container{
+    display: flex;
+    justify-content: flex-start;
+    cursor: pointer;
+}

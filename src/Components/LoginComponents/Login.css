@@ -6,14 +6,17 @@
 .main {
   background-image: url('https://images.unsplash.com/photo-1485848395967-65dff62dc35b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGhvc3BpdGFsfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60');
   background-image: url('https://images.unsplash.com/photo-1612537785055-e226dae15987?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80');
- 
+  min-height: 100%;
+  max-height: fit-content;
+
+
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 }
 
 
-.login-title{
+login-title{
     font-family: 'Merriweather', serif;
     font-size: 35px;
 }
@@ -21,7 +24,7 @@
     position: relative;
   }
   
-  .form-label {
+.form-label {
     position: absolute;
     pointer-events: none;
     transition: 0.2s ease all;
@@ -30,7 +33,7 @@
     color: #999;
   }
   
-  .form-label.active {
+ .form-label.active {
     top: -15px;
     left: 5px;
     font-size: 12px;
@@ -38,4 +41,95 @@
     background-color: #fff;
     padding: 0 5px;
   }
+
+  .main .container{
+    max-height: 100%;
+  }
   
+.custom-radio .radio-input {
+  display: flex;
+  flex-wrap: wrap;
+  width: 320px;
+  height: fit-content;
+  gap: 10px;
+  scale: 0.7;
+  position: relative;
+  bottom: 60px;
+  left: 110px;
+}
+
+.custom-radio .radio-input input {
+  height: 100px;
+  width: 100px;
+  translate: 0px 55px;
+  opacity: 0;
+  z-index: 10;
+}
+
+.custom-radio .card {
+  height: 100px;
+  width: 100px;
+  border: solid darkgray;
+  background-color: lightgray;
+  border-radius: 10px;
+  translate: 0px -55px;
+  position: relative;
+  z-index: 9;
+  transition: 0.2s;
+  color: darkgray;
+}
+
+.custom-radio .logo {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  translate: -50% 0px;
+}
+
+.custom-radio .card .title {
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  font-size: 23px;
+  bottom: 0px;
+  font-weight: bold;
+}
+
+.custom-radio .i_female:hover ~ .female {
+  filter: brightness(1.1);
+}
+
+.custom-radio .i_male:hover ~ .male {
+  filter: brightness(1.1);
+}
+
+.custom-radio .i_no-gender:hover ~ .no-gender {
+  filter: brightness(1.1);
+}
+
+.custom-radio .i_female:checked ~ .female {
+  border: solid #ff87bf;
+  color: #ff87bf;
+  background-color: #ffb8d9;
+}
+
+.custom-radio .i_male:checked ~ .male {
+  border: solid #3d44ff;
+  color: #3d44ff;
+  background-color: #85a5ff;
+}
+
+.custom-radio .i_no-gender:checked ~ .no-gender {
+  border: solid #c9c600;
+  color: #c9c600;
+  background-color: #fffd82;
+}
+.main  *, ::after, ::before{
+  box-sizing: content-box;
+}
+
+.custom-radio{
+  height: 80px;
+  margin: 0 0 0 0;
+
+}

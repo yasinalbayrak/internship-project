@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate     } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Login.css"
 import AuthActionTypes from "./type";
@@ -17,20 +17,26 @@ export default function Login({ type, handleSignUpLinkClick }) {
     const [email, setEmail] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
+    const [age, setAge] = useState(null);
+    const [gender, setGender] = useState('');
+
 
     const [nameClicked, setNameClicked] = useState(false);
     const [emailClicked, setEmailClicked] = useState(false);
     const [firstNameClicked, setFirstNameClicked] = useState(false);
     const [lastNameClicked, setLastNameClicked] = useState(false);
-
+    const [ageClicked, setAgeClicked] = useState(false);
     
+
     const [loading, setLoading] = useState(false); // State for loading state
     const navigate = useNavigate();
 
     const handleNameChange = (event) => {
         setName(event.target.value);
     };
-
+    const handleAgeChange = (event) => {
+        setAge(event.target.value);
+    };
     const handleEmailChange = (event) => {
         setEmail(event.target.value);
     };
@@ -42,16 +48,22 @@ export default function Login({ type, handleSignUpLinkClick }) {
         setLastName(event.target.value);
     };
 
+    const handleGenderChange = (event) => {
+        setGender(event.target.value);
+    };
+
     var user;
 
     async function fetchDataFromApi(type) {
         try {
-
+            
             user = type === 1 ? {
                 "firstname": firstName,
                 "lastname": lastName,
                 "email": email,
-                "password": name
+                "password": name,
+                "age": age,
+                "gender": gender
             }
                 :
                 {
@@ -59,7 +71,7 @@ export default function Login({ type, handleSignUpLinkClick }) {
                     "password": name
                 }
 
-
+            
             const options = {
                 method: "POST",
                 headers: {
@@ -83,15 +95,16 @@ export default function Login({ type, handleSignUpLinkClick }) {
 
 
                 const decodedToken = jwtDecode(apiData.token);
-                Cookies.set('token', apiData.token, {
+                console.log("Yasiiiiiiinnn")
+                Cookies.set('token', "Bearer " + apiData.token, {
                     expires: new Date(decodedToken.exp * 1000), // Convert exp timestamp to milliseconds
                     path: '/', // Specify the path where the cookie is accessible
                     secure: true, // Set the Secure flag to ensure the cookie is only sent over HTTPS
                     sameSite: 'lax', // Adjust this based on your needs (e.g., 'strict' or 'none' for cross-site requests)
-                    httpOnly: true, // Set the HttpOnly flag to prevent JavaScript access to the cookie
+                    //httpOnly: true, // Set the HttpOnly flag to prevent JavaScript access to the cookie
                 });
 
-                localStorage.setItem('userID',JSON.stringify(apiData.id));
+                localStorage.setItem('userID', JSON.stringify(apiData.id));
                 navigate("/Profile")
 
             }
@@ -99,7 +112,7 @@ export default function Login({ type, handleSignUpLinkClick }) {
             setLoading(false);
         } catch (error) {
             // Handle specific HTTP error status codes
-            if (error.response && error.response.status === 409) {
+            if (error.response) {
                 // Extract and display the error message from the API response
                 const responseData = await error.response.json();
                 const errorMessage = responseData.message || "Unknown error";
@@ -114,11 +127,11 @@ export default function Login({ type, handleSignUpLinkClick }) {
         }
     }
     const handleLogin = () => {
-        if (email === "" || name === "" || (type === AuthActionTypes.SIGNUP && (firstName === "" || lastName === ""))) {
+        if (email === "" || name === "" || (type === AuthActionTypes.SIGNUP && (firstName === "" || lastName === "" || age === null || gender === ""))) {
             notify("Missing Information, fill out the form.")
             return
         }
-        console.log("Here i am")
+
         // Simulate API request (replace this with your actual API call)
         setLoading(true);
         if (type === AuthActionTypes.SIGNUP) {
@@ -139,25 +152,17 @@ export default function Login({ type, handleSignUpLinkClick }) {
         setFirstName("")
         setLastName("")
         setName("")
+        setAge("")
+        setGender("")
 
         handleSignUpLinkClick()
     }
-    if (data) {
-        return <>
-            <div className="container py-5 h-100">
-                {data}
-                <br />
-                <br />
-                <br />
-                SUCCESSFULLY LOGGED IN
-            </div>
-        </>
-    }
+
     return (
         <>
-            <section className="vh-100 main" >
-                <div className="container py-5 h-100">
-                    <div className="row d-flex justify-content-center align-items-center h-100">
+            <section className="main" >
+                <div className="container py-5">
+                    <div className="row d-flex justify-content-center align-items-center">
                         <div className="col-12 col-md-8 col-lg-6 col-xl-5">
                             <div className="card shadow-2-strong" style={{ borderRadius: "1rem" }}>
                                 <div className="card-body p-5 text-center">
@@ -231,7 +236,68 @@ export default function Login({ type, handleSignUpLinkClick }) {
 
                                     </div>
 
+                                    {type === AuthActionTypes.SIGNUP &&
+                                    <>
+                                    <div className="form-outline mb-4 form-group">
+                                        <label className={`form-label ${ageClicked || age ? 'active' : ''}`} htmlFor="inputAge">
+                                            Age:
+                                        </label>
+                                        <input
+                                            type="number"
+                                            id="inputAge"
+                                            className="form-control form-control-lg"
+                                            onFocus={() => { setAgeClicked(true) }}
+                                            onBlur={() => { setAgeClicked(false) }}
+                                            value={age}
+                                            onChange={handleAgeChange}
+                                            disabled={loading}
+                                            required={true}
+                                        />
 
+                                    </div>
+
+
+                                    <div className="form-outline mb-4 form-group custom-radio">
+                                        <div class="radio-input">
+                                            <input value="FEMALE" 
+                                                name="gender-radio"
+                                                id="female"
+                                                type="radio"
+                                                className="input i_female"
+                                                onChange={handleGenderChange} // Add onChange event handler
+                                            />
+
+                                            <input
+                                                value="MALE" 
+                                                name="gender-radio"
+                                                id="male"
+                                                type="radio"
+                                                className="input i_male"
+                                                onChange={handleGenderChange} // Add onChange event handler
+                                            />
+                                            <div class="card female">
+                                                <svg class="logo" width="48" height="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M12 15.75A7.125 7.125 0 1 0 12 1.5a7.125 7.125 0 0 0 0 14.25Z"></path>
+                                                    <path d="M12 15.75v6.75"></path>
+                                                    <path d="M14.719 19.5H9.28"></path>
+                                                </svg>
+                                                <div class="title">Female</div>
+                                            </div>
+
+                                            <div class="card male">
+                                                <svg class="logo" width="48" height="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M10.125 21a7.125 7.125 0 1 0 0-14.25 7.125 7.125 0 0 0 0 14.25Z"></path>
+                                                    <path d="M21 7.5V3h-4.5"></path>
+                                                    <path d="M15.188 8.813 21 3"></path>
+                                                </svg>
+                                                <div class="title">Male</div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    </>
+                                    }
 
                                     <button disabled={loading} className="btn btn-primary btn-lg btn-block col-12" type="submit" onClick={handleLogin}>
                                         {loading ? 'Loading...' : type}
