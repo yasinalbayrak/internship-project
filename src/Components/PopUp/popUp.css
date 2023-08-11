@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Vithkuqi:wght@700&display=swap');
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+
+    
+  }
+  
+  .popup-inner {
+    position: relative;
+    background-color: white;
+    width: 27rem;
+    height: 17rem;
+    padding: 20px;
+    padding-top: 0;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: solid 5px yellow;
+    border-top: solid 5px yellow;
+  }
+  .popup-inner h2{
+    font-size: 30px;
+    font-weight: bold;
+  }
+  .popup-inner p{
+    font-style: italic;
+  }
+  .popup-inner h2,.popup-inner p {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+  }
+  .popup-inner .cl{
+    position: absolute;
+    bottom: 20px;
+
+  }
+
+   .popup-inner .sc{
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+  }
+
+  /* Animations */
+.button-animation {
+    position: relative;
+    animation-name: button-click;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+  }
+  
+  @keyframes button-click {
+    0% {
+      background-color: green;
+    }
+    50% {
+      background-color: green;
+      color: #fff;
+      transform: scale(1.1);
+      
+    }
+    100% {
+      background-color: green;
+    }
+  }

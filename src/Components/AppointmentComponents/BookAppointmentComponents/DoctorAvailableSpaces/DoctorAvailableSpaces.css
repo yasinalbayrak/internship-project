@@ -1,0 +1,347 @@
+.otr-ctn{
+    min-height: 100%;
+    max-height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.inr-ctn{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    margin-bottom: 3rem;
+    border: 2px solid black;
+    background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
+    background: linear-gradient(to right bottom, rgb(255, 255, 255), rgb(225, 221, 240));
+    border: 1px solid #e3e3e3;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+}
+
+.available-spaces{
+    width: 75%;
+    height: fit-content;
+    padding: 1rem;
+    display: flex;
+    
+}
+
+.doctor-avatar{
+    height:80px;
+    width: 80px;
+    overflow: hidden;
+    margin-right: 1rem;
+    
+}
+.doctor-avatar img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover;
+}
+
+.doctor-info-2 h2{
+    margin: 1rem 0;
+    font-style: italic;
+}
+
+.doctor-info-2 p{
+    margin-top: 1rem;
+    color: black;
+    font-size: 16px;
+    font-style: italic;
+}
+
+
+.date-info{
+    width: 75%;
+    margin-bottom: 2rem;
+}
+
+/* Table  */
+.day-of-week{
+    flex: 1;
+}
+
+
+.day-of-week tr, .day-of-week,th{
+   
+}
+.time-picker{
+    flex:7;
+}
+.available-spaces table {
+    border-collapse: separate;
+    border-spacing: 0 10px; /* Adjust the vertical spacing as needed */
+}
+.day-of-week tbody td{
+    display: flex;
+    justify-content: flex-start;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    width: fit-content;
+    padding: 5px;
+}
+
+.day-of-week tbody td.active-day{
+    border: 2px green dashed;
+
+}
+
+
+.time-picker th{
+  position: relative;
+  right: 20px;
+
+}
+
+.time-picker td{
+   
+    width: 160px;
+    height: 34px;
+    border-left: white solid 2px;
+    
+    background-color: gray;
+    
+}
+
+.time-picker td.available{
+    background-color: #51ff00;
+}
+
+.time-picker td.unavailable{
+    
+}
+
+.time-picker td.booking{
+    background-color: #1B6B93;
+}
+
+.time-picker td.unavailable:hover{
+    cursor:not-allowed;
+}
+
+.time-picker td.available:hover{
+   cursor: pointer;
+   background-color: darkgreen;
+    
+}
+.time-picker tr{
+    border-bottom: white solid 2px;
+    
+}
+
+.time-picker tr:nth-child(n) :last-child{
+    border-left: white solid 2px;
+    width: 0 ;
+    padding: 0;
+    background-color: gray;
+
+    cursor:not-allowed;
+}
+.time-picker tr:first-child{
+    border-top: white solid 2px;
+}
+
+.navigate-btns{
+    display: flex;
+    align-items: center;
+}
+
+.custom-date-button2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 12px;
+    border: 1px solid;
+    cursor: pointer;
+    height: 35px;
+    border-radius: 5px;
+    margin-left: 1rem;
+    transition: background-color 0.3s ease-in-out;
+}
+.custom-date-button2:hover {
+    background-color: #8ea1b4;
+    transition-duration: 0.3s; /* Increase the transition duration for smoother effect */
+    transition-timing-function: ease-out; /* Adjust the timing function for a smoother finish */
+}
+
+
+.custom-date-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 12px;
+    border: none;
+    cursor: pointer;
+    height: 50px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+
+
+.custom-date-button:hover {
+    background-color: #8ea1b4;
+    transition-duration: 0.3s; /* Increase the transition duration for smoother effect */
+    transition-timing-function: ease-out; /* Adjust the timing function for a smoother finish */
+}
+.go-to-date {
+    margin-right: 8px;
+    margin-top: 1rem;
+    font-size: 13px;
+    font-family: 'Noto Serif Vithkuqi', serif;
+    
+}
+
+.custom-date-button.active {
+    background-color: #8ea1b4;
+}
+
+.available-spaces{
+    flex-wrap: wrap;
+}
+
+.available-spaces .hints{
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.hint-1,.hint-2,.hint-3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5rem;
+}
+.green-box{
+    width: 20px;
+    height: 20px;
+    background-color: #51ff00;
+    margin-right: 0.3rem;
+}
+
+.blue-box{
+    width: 20px;
+    height: 20px;
+    background-color: #1B6B93;
+    margin-right: 0.3rem;
+}
+
+.gray-box{
+    width: 20px;
+    height: 20px;
+    background-color: gray;
+    margin-right: 0.3rem;
+}
+
+.selected-appt{
+    width: 75%;
+    min-height: 300px;
+    
+    padding: 3rem;
+    display: flex;
+    justify-content: center;
+    background-color:  #f5f5f5;
+    border: 1px solid #e3e3e3;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+   
+    
+}
+.hr-line{
+    width: 75%;
+    height: 1px; /* Adjust the value to increase or decrease the size */
+    background-color: black; /* Change the color as desired */
+    border: none; /* Remove the default border */
+}
+
+.show-appt{
+    height: 100%;
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    padding-left: 20%;
+}
+
+.show-appt .str{
+    margin-right: 0.6rem;
+
+}
+.show-appt p{
+    font-size: 22px;
+    margin-bottom: 2rem;
+}
+.otr-ctn   .back-bt{
+    position: absolute;
+    top: 50px;
+    left: 50px;
+}
+
+.back-bt button {
+    --primary-color: #645bff;
+    --secondary-color: #fff;
+    --hover-color: #111;
+    --arrow-width: 10px;
+    --arrow-stroke: 2px;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 20px;
+    color: var(--secondary-color);
+    padding: 1em 1.8em;
+    background: var(--primary-color);
+    display: flex;
+    transition: 0.2s background;
+    align-items: center;
+    gap: 0.6em;
+    font-weight: bold;
+}
+
+.back-bt button .arrow-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-bt button .arrow {
+    margin-top: 1px;
+    width: var(--arrow-width);
+    background: var(--primary-color);
+    height: var(--arrow-stroke);
+    position: relative;
+    transition: 0.2s;
+}
+
+.back-bt button .arrow::before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    border: solid var(--secondary-color);
+    border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
+    display: inline-block;
+    top: -3px;
+    left: 3px; /* Changed from right: 3px; */
+    transition: 0.2s;
+    padding: 3px;
+    transform: rotate(135deg); /* Changed from -45deg to 135deg */
+}
+
+.back-bt button:hover {
+    background-color: var(--hover-color);
+}
+
+.back-bt button:hover .arrow {
+    background: var(--secondary-color);
+}
+
+.back-bt button:hover .arrow:before {
+    left: 0; /* Changed from right: 0; */
+}

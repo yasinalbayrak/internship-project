@@ -10,7 +10,9 @@
     background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
   }
 
-
+  .profile{
+    background: linear-gradient(45deg, #83ec83, #233cca);
+  } 
  .profile .button {
     --main-focus: #2d8cf0;
     --font-color: #dedede;

@@ -61,6 +61,11 @@ export default function PersonalProfile() {
         navigate("/myAppointments")
         
     }
+    const  handleAddAppointments = () => {
+        navigate("/BookAppointments")
+        
+    }
+   
 
     // Render different UI based on loading and error states
     if (loading) {
@@ -71,7 +76,7 @@ export default function PersonalProfile() {
         return <div>Server currently is not responding.</div>;
     }
     return (
-        <section className="vh-100 profile" style={{ backgroundColor: '#f4f5f7' }}>
+        <section className="vh-100 profile" style={{  }}>
 
             <MDBContainer className="py-5 h-100">
                 <MDBRow className="justify-content-center align-items-center h-100">
@@ -132,7 +137,7 @@ export default function PersonalProfile() {
                                             </MDBCol>
                                             <MDBCol size="6" className="mb-3">
 
-                                                <button type="button" class="button">
+                                                <button type="button" class="button" onClick={handleAddAppointments}>
                                                     <span class="button__text">Book Appointments</span>
                                                     <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg"><line y2="19" y1="5" x2="12" x1="12"></line><line y2="12" y1="12" x2="19" x1="5"></line></svg></span>
                                                 </button>

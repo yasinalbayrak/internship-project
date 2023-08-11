@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Vithkuqi:wght@700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap');
 
 .forward-bt button {
     --primary-color: #645bff;
@@ -154,7 +154,7 @@
     margin-bottom: 1rem;
 }
 
-.appointment-container {
+.doctor-container {
     width: 75%;
     max-width: 75%;
     min-height: 200px;
@@ -163,20 +163,21 @@
 
 }
 
-.appointment-container table {
+.doctor-container table {
     max-width: 100%;
     border-radius: 10px;
     overflow: hidden;
+    
 }
 
-.appointment-container th,
-.appointment-container td {
+.doctor-container th,
+.doctor-container td {
     width: 70rem;
     padding-left: 8px;
 }
 
 
-.appointment-container .header {
+.doctor-container .header {
     background-color: #36304a;
     color: white;
     font-family: 'Open Sans', sans-serif;
@@ -187,11 +188,14 @@
     height: 60px;
 }
 
-.appointment-container th:first-child {
+.doctor-container th:first-child {
     padding-left: 40px;
 }
+.doctor-container th:last-child {
+    padding-right: 40px;
+}
 
-.appointment-container .header th {
+.doctor-container .header th {
     font-family: 'Open Sans', sans-serif;
     font-weight: unset;
     font-size: 16px;
@@ -200,11 +204,12 @@
 
 /* table body */
 
-.appointment-container tbody td {
-    padding: 0.5rem;
+.doctor-container tbody td {
+    padding: 1rem;
     font-family: OpenSans-Regular;
-    font-size: 15px;
-    color: gray;
+    font-size: 18px;
+    padding-left: 1rem;
+    color: rgb(29, 28, 28);
     line-height: 1.2;
     font-weight: unset;
     height: 40px;
@@ -212,71 +217,35 @@
 
 
 
-.appointment-container .app-status .st-active {
-
-
-    border-radius: 50px;
-    width: 70%;
-    padding: 0.5rem;
-    background-color: rgb(43, 255, 0);
-
-    display: flex;
-    justify-content: center;
+.doctor-container tbody tr {
+    cursor: pointer;
 
 }
 
-.appointment-container .app-status .st-cancelled {
-    border-radius: 50px;
-    width: 70%;
-    padding: 0.5rem;
-    background-color: #f85246;
-    color: rgb(216, 213, 213);
-    display: flex;
-    justify-content: center;
+.doctor-container tbody tr:nth-child(n):hover {
+    background-color: #8ace81;
 
 }
 
-.appointment-container .app-status .st-passed {
-
-    border-radius: 50px;
-    width: 70%;
-    padding: 0.5rem;
-    background-color: #4ebdb2;
-    color: rgb(104, 104, 104);
-    display: flex;
-    justify-content: center;
-
-}
-
-.appointment-container tbody tr {
-    cursor: auto;
-
-}
-
-.appointment-container tbody tr:nth-child(n):hover {
-    background-color: #f5f5f5;
-
-}
-
-.appointment-container tbody tr:nth-child(odd) {
+.doctor-container tbody tr:nth-child(odd) {
     background-color: white;
 }
 
-.appointment-container tbody tr:nth-child(even) {
+.doctor-container tbody tr:nth-child(even) {
     background-color: #f5f5f5;
 }
 
 
 /* Cancel Appointment Button*/
 
-.appointment-container .red-bold-icon {
+.doctor-container .red-bold-icon {
     color: red;
     font-weight: bold;
     font-size: 2rem;
 }
 
 
-.appointment-container .header th:last-child,
+.doctor-container .header th:last-child,
 tbody td:last-child {
     width: 10rem;
     /* Adjust the width as needed */
@@ -284,8 +253,16 @@ tbody td:last-child {
     /* Center the content horizontally */
 }
 
-.appointment-container .icon-container {
+.doctor-container .icon-container {
     display: flex;
     justify-content: flex-start;
     cursor: pointer;
 }
+
+
+.doctor-container p {
+    color: white;    
+    font-size: 18px;
+    font-style: italic;
+}
+
