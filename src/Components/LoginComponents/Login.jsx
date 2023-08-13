@@ -105,7 +105,11 @@ export default function Login({ type, handleSignUpLinkClick }) {
                 });
 
                 localStorage.setItem('userID', JSON.stringify(apiData.id));
-                navigate("/Profile")
+                if(decodedToken.role[0].name === "Doctor")
+                    navigate("/DoctorProfile")
+                else
+
+                    navigate("/Profile")
 
             }
 
@@ -152,7 +156,7 @@ export default function Login({ type, handleSignUpLinkClick }) {
         setFirstName("")
         setLastName("")
         setName("")
-        setAge("")
+        setAge(null)
         setGender("")
 
         handleSignUpLinkClick()
@@ -265,6 +269,7 @@ export default function Login({ type, handleSignUpLinkClick }) {
                                                 type="radio"
                                                 className="input i_female"
                                                 onChange={handleGenderChange} // Add onChange event handler
+                                                
                                             />
 
                                             <input
@@ -273,7 +278,8 @@ export default function Login({ type, handleSignUpLinkClick }) {
                                                 id="male"
                                                 type="radio"
                                                 className="input i_male"
-                                                onChange={handleGenderChange} // Add onChange event handler
+                                                onChange={handleGenderChange} // Add onChange event 
+                                                
                                             />
                                             <div class="card female">
                                                 <svg class="logo" width="48" height="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

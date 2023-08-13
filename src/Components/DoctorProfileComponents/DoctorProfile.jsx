@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBTypography, MDBIcon } from 'mdb-react-ui-kit';
-import "./Profile.css"
+import "./DoctorProfile.css"
 import { useNavigate } from "react-router-dom";
 import { fetchData } from '../../service/apiService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,7 +13,7 @@ import DoneOutlineIcon from '@mui/icons-material/DoneOutline';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function PersonalProfile() {
+export default function DoctorProfile() {
 
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -25,12 +25,11 @@ export default function PersonalProfile() {
     const [age, setAge] = useState(null)
     const [gender, setGender] = useState("")
 
-    const handleEditToggle = () => {
-        setEditMode(!editMode); // Toggle edit mode
-    };
 
     const handleAgeChange = (event) => {
+        
         setAge(event.target.value)
+        
     }
 
 
@@ -38,7 +37,8 @@ export default function PersonalProfile() {
         try {
             // Send update request to the server
             console.log(userIDStr)
-            const url = `/api/v1/user/patient/${userIDStr}`;
+            console.log(parseInt(age))
+            const url = `/api/v1/user/doctor/${userIDStr}`;
             const options = {
                 method: 'PUT',
                 headers: {
@@ -46,12 +46,17 @@ export default function PersonalProfile() {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
+                    "user":{
+                        "firstname": data.user.firstname,
+                        "lastname": data.user.lastname,
+                        "email": email,
+                        "gender": gender,
+                        "age":parseInt(age),
+                        "passw": "1234",
+                    },
+                    "specialization": data.specialization,
+                    "salary": data.salary
 
-                    "firstname": data.firstname,
-                    "lastname": data.lastname,
-                    "email": email,
-                    "gender": gender,
-                    "age":parseInt(age)
 
                 })
 
@@ -60,9 +65,9 @@ export default function PersonalProfile() {
             const updatedData = await fetchData(url, options);
 
             // Create promises for all state-setting operations
-            const setEmailPromise = setEmail(updatedData.email);
-            const setAgePromise = setAge(parseInt(updatedData.age));
-            const setGenderPromise = setGender(updatedData.gender);
+            const setEmailPromise = setEmail(updatedData.user.email);
+            const setAgePromise = setAge(parseInt(updatedData.user.age));
+            const setGenderPromise = setGender(updatedData.user.gender);
 
             // Wait for all promises to resolve before updating the main data and exiting edit mode
             await Promise.all([setEmailPromise, setAgePromise, setGenderPromise]);
@@ -103,7 +108,7 @@ export default function PersonalProfile() {
 
         const fetchDataFromApi = async () => {
             try {
-                const url = `/api/v1/user/patient/${userIDStr}`;
+                const url = `/api/v1/user/doctor/${userIDStr}`;
                 const options = {
                     method: 'GET',
                     headers: {
@@ -116,9 +121,9 @@ export default function PersonalProfile() {
                 setData(fetchedData);
 
 
-                setAge(parseInt(fetchedData.age))
-                setEmail(fetchedData.email)
-                setGender(fetchedData.gender)
+                setAge(parseInt(fetchedData.user.age))
+                setEmail(fetchedData.user.email)
+                setGender(fetchedData.user.gender)
                 setLoading(false);
                 
             } catch (error) {
@@ -133,11 +138,7 @@ export default function PersonalProfile() {
     }, [userIDStr]);
 
     const handleMyAppointments = () => {
-        navigate("/myAppointments")
-
-    }
-    const handleAddAppointments = () => {
-        navigate("/BookAppointments")
+        navigate("/doctorAppointments")
 
     }
 
@@ -167,10 +168,10 @@ export default function PersonalProfile() {
                             <MDBRow className="g-0">
                                 <MDBCol md="4" className="gradient-custom text-center text-white"
                                     style={{ borderTopLeftRadius: '.5rem', borderBottomLeftRadius: '.5rem' }}>
-                                    <MDBCardImage src={data.gender === "MALE" ? "https://cdn3.iconfinder.com/data/icons/urology-1/60/patient__avatar__man__male__boy-512.png" : "https://cdn0.iconfinder.com/data/icons/doctors-specialist-1/60/patient__female__girl__medical__avatar-512.png"}
+                                    <MDBCardImage src={data.user.gender === "MALE" ? "https://st3.depositphotos.com/1064969/15665/v/450/depositphotos_156656420-stock-illustration-doctor-avatar-icon.jpg" :'https://img.freepik.com/premium-vector/avatar-female-doctor-with-black-hair-doctor-with-stethoscope-vector-illustrationxa_276184-33.jpg?w=2000'}
                                         alt="Avatar" className="my-5" style={{ width: '100px' }} fluid />
-                                    <MDBTypography tag="h5">{data.firstname + " " + data.lastname}</MDBTypography>
-                                    <MDBCardText>{data.role}</MDBCardText>
+                                    <MDBTypography tag="h5">{data.user.firstname + " " + data.user.lastname}</MDBTypography>
+                                    <MDBCardText>{data.user.role}</MDBCardText>
                                     <MDBIcon far icon="edit mb-5" />
                                 </MDBCol>
 
@@ -194,9 +195,9 @@ export default function PersonalProfile() {
                                                         <>
                                                             <Button onClick={handleUpdate} startIcon={<DoneOutlineIcon />} variant="contained" color="success" style={{ position: "absolute", right: "20px" }}> Update</Button>
                                                             <Button onClick={() => {
-                                                                setEmail(data.email)
-                                                                setAge(parseInt(data.age))
-                                                                setGender(data.gender)
+                                                                setEmail(data.user.email)
+                                                                setAge(parseInt(data.user.age))
+                                                                setGender(data.user.gender)
                                                                 setEditMode((prev) => !prev)
                                                             }} variant="outlined" color="error" style={{ position: "absolute", right: "140px" }}> Cancel </Button>
 
@@ -223,11 +224,11 @@ export default function PersonalProfile() {
 
                                                     />
                                                     :
-                                                    <MDBCardText className="text-muted">{data.email}</MDBCardText>}
+                                                    <MDBCardText className="text-muted">{data.user.email}</MDBCardText>}
                                             </MDBCol>
                                             <MDBCol size="6" className="mb-3">
                                                 <MDBTypography tag="h6">id</MDBTypography>
-                                                <MDBCardText className="text-muted">{data.id}</MDBCardText>
+                                                <MDBCardText className="text-muted">{data.user.id}</MDBCardText>
                                             </MDBCol>
                                         </MDBRow>
 
@@ -236,7 +237,7 @@ export default function PersonalProfile() {
                                                 <MDBTypography tag="h6">Age</MDBTypography>
                                                 {
                                                     !editMode ?
-                                                        <MDBCardText className="text-muted">{data.age}</MDBCardText>
+                                                        <MDBCardText className="text-muted">{data.user.age}</MDBCardText>
                                                         :
                                                         <input
                                                             type="number"
@@ -256,7 +257,7 @@ export default function PersonalProfile() {
                                                     !editMode ?
 
 
-                                                        <MDBCardText className="text-muted">{(data.gender)}</MDBCardText>
+                                                        <MDBCardText className="text-muted">{(data.user.gender)}</MDBCardText>
                                                         :
                                                         <div className="form-outline mb-4 form-group custom-radio">
                                                             <div class="radio-input" style={{ width: "220px", left: "0" }}>
@@ -302,6 +303,18 @@ export default function PersonalProfile() {
                                                         </div>
                                                 }
                                             </MDBCol>
+                                            
+                                        </MDBRow>
+                                        <MDBRow className="pt-1">
+                                            <MDBCol size="6" className="mb-3">
+                                                <MDBTypography tag="h6">Specialization</MDBTypography>
+                                                
+                                                    <MDBCardText className="text-muted">{data.specialization}</MDBCardText>
+                                            </MDBCol>
+                                            <MDBCol size="6" className="mb-3">
+                                                <MDBTypography tag="h6">Salary</MDBTypography>
+                                                <MDBCardText className="text-muted">{data.salary}$</MDBCardText>
+                                            </MDBCol>
                                         </MDBRow>
                                         <br />
                                         <MDBTypography tag="h6">Actions</MDBTypography>
@@ -313,13 +326,7 @@ export default function PersonalProfile() {
                                                     <span class="button__icon"><FontAwesomeIcon icon={faCalendar} /></span>
                                                 </button>
                                             </MDBCol>
-                                            <MDBCol size="6" className="mb-3">
-
-                                                <button type="button" class="button" onClick={handleAddAppointments}>
-                                                    <span class="button__text">Book Appointments</span>
-                                                    <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg"><line y2="19" y1="5" x2="12" x1="12"></line><line y2="12" y1="12" x2="19" x1="5"></line></svg></span>
-                                                </button>
-                                            </MDBCol>
+                                            
                                         </MDBRow>
 
                                         <div className="d-flex justify-content-start">

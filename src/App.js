@@ -11,6 +11,9 @@ import './globalVariables';
 import MyAppointments from './Components/AppointmentComponents/MyAppointmentsComponents/MyAppointments';
 import BookAppointments from './Components/AppointmentComponents/BookAppointmentComponents/BookAppointments';
 import DoctorAvailableSpaces from './Components/AppointmentComponents/BookAppointmentComponents/DoctorAvailableSpaces/DoctorAvailableSpaces';
+import DoctorProfile from './Components/DoctorProfileComponents/DoctorProfile';
+import DoctorAppointments from './Components/DoctorProfileComponents/DoctorAppointments/DoctorAppointments';
+
 function App() {
   return <BrowserRouter>
     <Routes>
@@ -19,6 +22,11 @@ function App() {
       <Route path="/myAppointments" element={<MyAppointments />} />
       <Route path="/bookAppointments" element={<BookAppointments />} />
       <Route path="/doctorAvailableSpaces" element={<DoctorAvailableSpaces />} />
+
+      <Route path = "/doctorProfile" element= {<DoctorProfile />} />
+      <Route path = "/doctorAppointments" element= {<DoctorAppointments />} />
+
+      
     </Routes>
   </BrowserRouter>
 }
